@@ -1,8 +1,13 @@
 import { useEffect, useMemo } from "react";
+import { create } from "zustand";
 import { Passport } from "@credenza-web3/passport";
-import { useCredenzaPassportStore } from "../../stores/credenza";
 
 const PASSPORT_CHAIN_ID = "80001";
+
+const useCredenzaPassportStore = create((set) => ({
+  credenzaPassport: null,
+  setCredenzaPassport: (credenzaPassport) => set({ credenzaPassport }),
+}));
 
 export function CredenzaPassport() {
   const { credenzaPassport, setCredenzaPassport } = useCredenzaPassportStore();
